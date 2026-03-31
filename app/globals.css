@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  /* Page layout */
+  .container-custom {
+    @apply w-full px-6 lg:px-30 py-6 min-h-screen bg-gray-50;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Navbar Styles */
+  .navbar {
+    @apply w-full flex justify-between items-center mb-8 lg:mb-16;
+  }
+
+  .logo {
+    @apply text-xl lg:text-2xl font-extrabold text-black tracking-tight;
+  }
+
+  /* Responsive Card */
+  .card {
+    /* w-full for mobile, max-w-3xl for desktop, mx-auto to center */
+    @apply w-full max-w-3xl bg-gray-200 shadow-xl rounded-2xl lg:rounded-3xl p-6 lg:p-10 mx-auto;
+  }
+
+  /* Typography */
+  .title {
+    @apply text-2xl lg:text-3xl font-bold text-gray-900 mb-6 text-center;
+  }
+
+  /* Form spacing */
+  .form-group {
+    @apply mb-4 lg:mb-6;
+  }
+
+  /* Input fields */
+  .input-field, .textarea-field, .select-field {
+    @apply w-full border border-gray-300 rounded-xl px-4 py-2 lg:py-3 text-black 
+           bg-white focus:outline-none focus:ring-2 focus:ring-[#54afeb] 
+           transition-all text-base; /* text-base prevents iOS zoom on focus */
+  }
+
+  .textarea-field {
+    @apply min-h-30 lg:min-h-37.5;
+  }
+
+  /* Buttons */
+  .button-primary {
+    @apply w-full bg-[#54afeb] text-white font-bold py-3 px-6 rounded-xl
+           hover:bg-blue-500 transition-all active:scale-[0.98] cursor-pointer;
+  }
+
+  .button-secondary {
+    @apply bg-black text-white px-4 lg:px-6 py-2 rounded-full font-medium text-sm lg:text-base
+           hover:bg-transparent hover:text-black border-2 border-black 
+           transition-all cursor-pointer;
+  }
 }
